@@ -29,36 +29,45 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     url: '/app',
     abstract: true,
     templateUrl: 'templates/menu.html',
+    controller: 'AppCtrl'
   })
 
-  .state('app.home', {
-    url: '/home',
+  .state('app.search', {
+    url: '/search',
     views: {
       'menuContent': {
-        templateUrl: 'templates/home.html'
+        templateUrl: 'templates/search.html'
       }
     }
   })
 
-  .state('app.lampe', {
-      url: '/lampe',
+  .state('app.browse', {
+      url: '/browse',
       views: {
         'menuContent': {
-          templateUrl: 'templates/lampe.html',
-          controller:'lampeCtrl'
+          templateUrl: 'templates/browse.html'
         }
       }
     })
-    .state('app.vibration', {
-      url: '/vibration',
+    .state('app.playlists', {
+      url: '/playlists',
       views: {
         'menuContent': {
-          templateUrl: 'templates/vibration.html',
-          controller: 'vibrationCtrl'
+          templateUrl: 'templates/playlists.html',
+          controller: 'PlaylistsCtrl'
         }
       }
-    });
+    })
 
+  .state('app.single', {
+    url: '/playlists/:playlistId',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/playlist.html',
+        controller: 'PlaylistCtrl'
+      }
+    }
+  });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/home');
+  $urlRouterProvider.otherwise('/app/playlists');
 });
